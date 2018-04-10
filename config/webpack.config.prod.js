@@ -168,6 +168,36 @@ module.exports = {
               },
             ],
           },
+          {
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+              fallback: {
+                loader: 'style-loader',
+                options: {
+                  insertAt: 'top'
+                }
+              },
+              use: [
+                {
+                  loader: 'typings-for-css-modules-loader',
+                  options: {
+                    modules: true,
+                    namedExport: true,
+                    camelCase: true,
+                    minimize: true,
+                    localIdentName: "[local]_[hash:base64:5]"
+                  }
+                },
+                {
+                  loader: 'sass-loader',
+                  options: {
+                    outputStyle: 'expanded',
+                    sourceMap: true
+                  }
+                }
+              ]
+            })
+          },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
