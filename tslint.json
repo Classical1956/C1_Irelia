@@ -11,7 +11,6 @@
             "arguments",
             "statements"
         ],
-        "member-access": true,
         "ban": false,
         "class-name": true,
         "comment-format": [
@@ -26,7 +25,7 @@
             "spaces"
         ],
         "interface-name": [
-            true,
+            false,
             "never-prefix"
         ],
         "jsdoc-format": true,
@@ -34,16 +33,16 @@
         "jsx-no-multiline-js": false,
         "label-position": true,
         "max-line-length": [
-            true,
+            false,
             120
         ],
         "member-ordering": [
-            true,
+            false,
             "public-before-private",
             "static-before-instance",
             "variables-before-functions"
         ],
-        "no-any": true,
+        "no-any": false,
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
@@ -68,6 +67,7 @@
         "no-trailing-whitespace": false,
         "no-unused-expression": true,
         "no-use-before-declare": true,
+        "jsx-alignment": false,
         "one-line": [
             true,
             "check-catch",
