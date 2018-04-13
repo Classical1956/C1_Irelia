@@ -13,7 +13,6 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-const tsImportPlugin = require('ts-import-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -98,7 +97,7 @@ module.exports = {
       '.jsx',
     ],
     alias: {
-
+      
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -147,7 +146,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-
+              
               compact: true,
             },
           },
@@ -156,19 +155,18 @@ module.exports = {
           {
             test: /\.(ts|tsx)$/,
             include: paths.appSrc,
-            loader: require.resolve('ts-loader'),
-            options: {
-              transpileOnly: true,
-              getCustomTransformers: () => ({
-                before: [tsImportPlugin({
-                  libraryName: "antd-mobile",
-                  style: "css"
-                })]
-              })
-            }
+            use: [
+              {
+                loader: require.resolve('ts-loader'),
+                options: {
+                  // disable type checker - we will use it in fork plugin
+                  transpileOnly: true,
+                },
+              },
+            ],
           },
           {
-            test: /\.(scss|sass)$/,
+            test: /\.scss$/,
             use: ExtractTextPlugin.extract({
               fallback: {
                 loader: 'style-loader',
@@ -178,10 +176,21 @@ module.exports = {
               },
               use: [
                 {
-                  loader: "typings-for-css-modules-loader",
+                  loader: 'typings-for-css-modules-loader',
+                  options: {
+                    modules: true,
+                    namedExport: true,
+                    camelCase: true,
+                    minimize: true,
+                    localIdentName: "[local]_[hash:base64:5]"
+                  }
                 },
                 {
-                  loader: "sass-loader",
+                  loader: 'sass-loader',
+                  options: {
+                    outputStyle: 'expanded',
+                    sourceMap: true
+                  }
                 }
               ]
             })
@@ -223,7 +232,6 @@ module.exports = {
               },
             ],
           },
-          { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: path.resolve('src') },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.

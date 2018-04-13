@@ -1,15 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'mobx-react';
 import registerServiceWorker from './registerServiceWorker';
 import 'antd-mobile/dist/antd-mobile.min.css';
 import { createHashHistory } from 'history';
 import Application from './Application';
-require('./styles/base.scss');
+import './styles/base.scss';
 
 const history = createHashHistory();
 
 ReactDOM.render(
-  <Application history={history} />,
+  <Provider history={history}>
+    <Application history={history} />
+  </Provider>,
   document.getElementById('root') as HTMLElement,
 );
 registerServiceWorker();

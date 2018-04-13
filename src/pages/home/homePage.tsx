@@ -1,12 +1,15 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import styles from './homePage.scss';
+
 @observer
 export default class HomePage extends React.PureComponent {
     public render() {
+        console.log('====================================');
+        console.log('render homepage props =>', this.props);
+        console.log('====================================');
         return (
-            <div className={styles.container} onClick={this.onClick}>
-                <p>sss</p>
+            <div onClick={this.onClick}>
+                sss
             </div>
         );
     }

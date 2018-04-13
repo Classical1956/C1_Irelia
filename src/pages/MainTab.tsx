@@ -14,6 +14,9 @@ import {
 import {
     ActivityPage,
 } from './activity';
+import {
+    RespositoryPage,
+} from './repositories';
 
 @observer
 export default class MainTab extends React.PureComponent {
@@ -58,8 +61,8 @@ export default class MainTab extends React.PureComponent {
                     </TabBar.Item >
 
                     <TabBar.Item
-                        title="response"
-                        key="response"
+                        title="respository"
+                        key="respository"
                         icon={<div style={{
                             width: '22px',
                             height: '22px',
@@ -75,6 +78,28 @@ export default class MainTab extends React.PureComponent {
                         }
                         onPress={() => {
                             this.pageStore.updateCurrentSelectedIndex(1);
+                        }}
+                    >
+                        <RespositoryPage />
+                    </TabBar.Item >
+                    <TabBar.Item
+                        title="home"
+                        key="home"
+                        icon={<div style={{
+                            width: '22px',
+                            height: '22px',
+                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
+                        }} />
+                        }
+                        selected={this.pageStore.currentSelectedIndex === 2}
+                        selectedIcon={<div style={{
+                            width: '22px',
+                            height: '22px',
+                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
+                        }} />
+                        }
+                        onPress={() => {
+                            this.pageStore.updateCurrentSelectedIndex(2);
                         }}
                     >
                         <HomePage />
