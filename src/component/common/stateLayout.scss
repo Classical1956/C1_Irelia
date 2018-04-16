@@ -1,0 +1,22 @@
+
+
+.fullContent {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullContent .img{
+    max-width: 60%;
+    margin-top: rem(20);
+}
+
+.fullContent .desc{
+    max-width: 80%;
+    text-align: center;
+    color: antiquewhite;
+}

@@ -1,10 +1,33 @@
 import React from 'react';
-import { inject } from 'mobx-react';
-// import { withRouter } from 'react-router-dom';
-@inject('history')
-export default class ActivityPage extends React.PureComponent<any, any> {
+import {
+    BasePage
+} from '../../base';
+import { observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
+import {
+    ActivityStore,
+} from '../../stores';
 
-    public render() {
+@observer
+class ActivityPage extends BasePage {
+
+    constructor(props: any) {
+        super(props);
+    }
+    navigationTitle() {
+        return 'activity';
+    }
+    showNavigationBar() {
+        return false;
+    }
+
+    initPageStore() {
+        this.pageStore = new ActivityStore();
+
+        setTimeout(() => this.pageStore.showContent(), 1000);
+    }
+
+    public renderContent() {
         console.log('render props =>', this.props);
         return (
             <div>
@@ -20,4 +43,4 @@ export default class ActivityPage extends React.PureComponent<any, any> {
     }
 }
 
-// export default withRouter(ActivityPage);
+export default withRouter(ActivityPage);
