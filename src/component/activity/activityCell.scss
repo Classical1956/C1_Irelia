@@ -1,0 +1,26 @@
+.list_item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 14px 15px 14px 35px;
+    line-height: inherit;
+    text-align: left;
+}
+
+.list_heading {
+    border-top: 1px solid #eaecef
+}
+
+.list_item .list_item_title{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #0366d6;
+    word-wrap: break-word;
+}

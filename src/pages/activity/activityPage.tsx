@@ -7,9 +7,16 @@ import { withRouter } from 'react-router-dom';
 import {
     ActivityStore,
 } from '../../stores';
+import styles from './activityPage.scss';
+import {
+    ActivityCell
+} from '../../component/activity';
+import {
+    ListView,
+} from 'antd-mobile';
 
 @observer
-class ActivityPage extends BasePage {
+class ActivityPage extends BasePage<ActivityStore> {
 
     constructor(props: any) {
         super(props);
@@ -28,18 +35,31 @@ class ActivityPage extends BasePage {
     }
 
     public renderContent() {
-        console.log('render props =>', this.props);
         return (
-            <div>
-                <p onClick={this.click}>activity</p>
+            <div className={styles.pageContent}>
+                <ListView
+                    className={styles.listView}
+                    renderRow={this.renderItem}
+                    dataSource={this.pageStore.fetchActivityList}
+                />
             </div>
         );
     }
 
-    private click = () => {
-        let props: any = this.props;
-        let id = Math.floor(Math.random() * 100);
-        props.history.push(`/activity/detail/${id}`);
+    // private click = () => {
+    //     let props: any = this.props;
+    //     let id = Math.floor(Math.random() * 100);
+    //     props.history.push(`/activity/detail/${id}`);
+    // }
+
+    private renderItem = (rowData: any, sectionId = '0', rowId = '0') => {
+        return (
+            <ActivityCell
+                index={parseInt(rowId, 10)}
+                stargazers_count={rowData.stargazers_count}
+                full_name={rowData.full_name}
+            />
+        );
     }
 }
 

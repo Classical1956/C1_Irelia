@@ -1,0 +1,1 @@
+export { ActivityCell, ActivityCellProps } from './activityCell';

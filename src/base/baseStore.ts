@@ -9,6 +9,7 @@ export default class BaseStore extends IBaseStore {
     @observable private layoutState: string = LAYOUT_STATE.LOADING;
 
     dispose() { }
+
     loadData() { }
 
     fetchPageParams() {

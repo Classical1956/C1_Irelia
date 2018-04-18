@@ -1,4 +1,13 @@
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
+export interface IPageComponentProps<PS> extends RouteComponentProps<any> {
+    pageStore?: PS; // BaseStore | null;
+    route?: any;
+}
 
+export class PageClassComponent<PS, S> extends React.Component<IPageComponentProps<PS>, S> {
+
+}
 export abstract class IBaseStore {
     abstract dispose(): any;
 

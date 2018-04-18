@@ -4,12 +4,9 @@
     height: 100%;
     width: 100%;
     flex-direction: column;
-}
-.homeColor {
-    color:red;
-    font-size: 30px;
+    .listView {
+        flex:1;
+
+    }
 }
 
-.icons {
-    align-self: center;
-}

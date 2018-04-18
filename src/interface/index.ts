@@ -1,1 +1,1 @@
-export { IBaseStore } from './store';
+export * from './store';

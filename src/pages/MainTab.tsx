@@ -3,7 +3,12 @@ import {
     TabBar,
 } from 'antd-mobile/lib';
 import styles from './MianTab.scss';
+import classNames from 'classnames';
 import { observer } from 'mobx-react';
+import { GlobalStyles } from '../styles';
+import {
+    TAB_ICON,
+} from '../constants';
 import {
     AppStore,
     MainStore,
@@ -34,26 +39,19 @@ export default class MainTab extends React.PureComponent {
                 <TabBar
                     className={styles.Bar}
                     unselectedTintColor="#91919c"
-                    tintColor="#00c599"
+                    tintColor={GlobalStyles.colors.primary}
                     barTintColor="white"
                 >
                     <TabBar.Item
-                        title="activity"
-                        key="activity"
-                        icon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
-                        }} />
-                        }
+                        title="Activity"
+                        key="Activity"
+                        icon={<div></div>}
                         selected={this.pageStore.currentSelectedIndex === 0}
-                        selectedIcon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
-                        }} />
-                        }
+                        selectedIcon={this.renderIcon(0, true)}
                         onPress={() => {
+                            console.log('====================================');
+                            console.log('0');
+                            console.log('====================================');
                             this.pageStore.updateCurrentSelectedIndex(0);
                         }}
                     >
@@ -61,22 +59,15 @@ export default class MainTab extends React.PureComponent {
                     </TabBar.Item >
 
                     <TabBar.Item
-                        title="respository"
-                        key="respository"
-                        icon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
-                        }} />
-                        }
+                        title="Respository"
+                        key="Respository"
+                        icon={<div></div>}
                         selected={this.pageStore.currentSelectedIndex === 1}
-                        selectedIcon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
-                        }} />
-                        }
+                        selectedIcon={this.renderIcon(1, true)}
                         onPress={() => {
+                            console.log('====================================');
+                            console.log('1');
+                            console.log('====================================');
                             this.pageStore.updateCurrentSelectedIndex(1);
                         }}
                     >
@@ -85,20 +76,13 @@ export default class MainTab extends React.PureComponent {
                     <TabBar.Item
                         title="home"
                         key="home"
-                        icon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
-                        }} />
-                        }
+                        icon={<div></div>}
                         selected={this.pageStore.currentSelectedIndex === 2}
-                        selectedIcon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
-                        }} />
-                        }
+                        selectedIcon={this.renderIcon(2, true)}
                         onPress={() => {
+                            console.log('====================================');
+                            console.log('2');
+                            console.log('====================================');
                             this.pageStore.updateCurrentSelectedIndex(2);
                         }}
                     >
@@ -106,6 +90,16 @@ export default class MainTab extends React.PureComponent {
                     </TabBar.Item >
                 </TabBar>
             </div>
+        );
+    }
+
+    private renderIcon = (index: number, selected: boolean) => {
+        let iconName = TAB_ICON[index];
+        let className = classNames('icon', styles.tabIcon);
+        return (
+            <svg className={className} aria-hidden="true">
+                <use xlinkHref={`#${iconName}`} />
+            </svg>
         );
     }
 }

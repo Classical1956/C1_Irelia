@@ -8,3 +8,14 @@ export const LAYOUT_STATE = {
     ERROR: 'error',
     SUCESS: 'sucess',
 };
+
+// =================================================
+/**
+ * tab icon
+ */
+export const TAB_ICON = [
+    'icon-yemian',
+    'icon-github',
+    'icon-geren'
+];
+// ========================================================

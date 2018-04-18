@@ -5,6 +5,9 @@ import {
 import {
     BaseStore
 } from '../base';
+import {
+    IBaseStore,
+} from '../interface';
 import styles from './basePage.scss';
 import {
     LAYOUT_STATE
@@ -17,8 +20,8 @@ import {
 } from '../component';
 
 @observer
-export default class BasePage extends React.PureComponent<any> {
-    protected pageStore: BaseStore;
+export default class BasePage<PS extends IBaseStore> extends React.PureComponent<any, any> {
+    protected pageStore: any;
 
     protected routeParams: any;
 

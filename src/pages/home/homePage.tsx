@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import styles from './homePage.scss';
 
 @observer
 export default class HomePage extends React.PureComponent {
@@ -8,8 +9,8 @@ export default class HomePage extends React.PureComponent {
         console.log('render homepage props =>', this.props);
         console.log('====================================');
         return (
-            <div onClick={this.onClick}>
-                sss
+            <div className={styles.pageContent} onClick={this.onClick}>
+                <svg className="icon icons" aria-hidden="true"><use className={styles.homeColor} xlinkHref="#icon-shoucang" /></svg>
             </div>
         );
     }
