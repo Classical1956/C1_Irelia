@@ -45,13 +45,10 @@ export default class MainTab extends React.PureComponent {
                     <TabBar.Item
                         title="Activity"
                         key="Activity"
-                        icon={<div></div>}
+                        icon={this.renderIcon(0, false)}
                         selected={this.pageStore.currentSelectedIndex === 0}
                         selectedIcon={this.renderIcon(0, true)}
                         onPress={() => {
-                            console.log('====================================');
-                            console.log('0');
-                            console.log('====================================');
                             this.pageStore.updateCurrentSelectedIndex(0);
                         }}
                     >
@@ -61,13 +58,10 @@ export default class MainTab extends React.PureComponent {
                     <TabBar.Item
                         title="Respository"
                         key="Respository"
-                        icon={<div></div>}
+                        icon={this.renderIcon(1, false)}
                         selected={this.pageStore.currentSelectedIndex === 1}
                         selectedIcon={this.renderIcon(1, true)}
                         onPress={() => {
-                            console.log('====================================');
-                            console.log('1');
-                            console.log('====================================');
                             this.pageStore.updateCurrentSelectedIndex(1);
                         }}
                     >
@@ -76,13 +70,10 @@ export default class MainTab extends React.PureComponent {
                     <TabBar.Item
                         title="home"
                         key="home"
-                        icon={<div></div>}
+                        icon={this.renderIcon(2, false)}
                         selected={this.pageStore.currentSelectedIndex === 2}
                         selectedIcon={this.renderIcon(2, true)}
                         onPress={() => {
-                            console.log('====================================');
-                            console.log('2');
-                            console.log('====================================');
                             this.pageStore.updateCurrentSelectedIndex(2);
                         }}
                     >
@@ -98,7 +89,7 @@ export default class MainTab extends React.PureComponent {
         let className = classNames('icon', styles.tabIcon);
         return (
             <svg className={className} aria-hidden="true">
-                <use xlinkHref={`#${iconName}`} />
+                <use  xlinkHref={`#${iconName}`} />
             </svg>
         );
     }
