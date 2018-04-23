@@ -43,6 +43,8 @@ export default class ActivityStore extends BaseStore {
 
     }
 
+    public fetsssss = () => { };
+
     @computed
     get fetchActivityList() {
         return this.ds.cloneWithRows(this.activityList.slice());

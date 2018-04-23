@@ -30,7 +30,6 @@ class ActivityPage extends BasePage<ActivityStore> {
 
     initPageStore() {
         this.pageStore = new ActivityStore();
-
         setTimeout(() => this.pageStore.showContent(), 1000);
     }
 

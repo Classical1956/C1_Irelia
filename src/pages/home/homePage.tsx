@@ -14,7 +14,6 @@ export default class HomePage extends React.PureComponent {
             </div>
         );
     }
-
     private onClick = () => {
         window.location.href = 'http://www.baidu.com';
     }
