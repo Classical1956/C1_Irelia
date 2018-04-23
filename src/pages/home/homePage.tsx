@@ -10,7 +10,7 @@ export default class HomePage extends React.PureComponent {
         console.log('====================================');
         return (
             <div className={styles.pageContent} onClick={this.onClick}>
-                <svg className="icon icons" aria-hidden="true"><use className={styles.homeColor} xlinkHref="#icon-shoucang" /></svg>
+                <svg className="icon icons" aria-hidden="true"><use xlinkHref="#icon-github" /></svg>
             </div>
         );
     }
