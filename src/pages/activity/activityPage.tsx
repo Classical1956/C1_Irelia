@@ -18,6 +18,8 @@ import {
 @observer
 class ActivityPage extends BasePage<ActivityStore> {
 
+    pageStore: ActivityStore;
+    
     constructor(props: any) {
         super(props);
     }
@@ -44,12 +46,6 @@ class ActivityPage extends BasePage<ActivityStore> {
             </div>
         );
     }
-
-    // private click = () => {
-    //     let props: any = this.props;
-    //     let id = Math.floor(Math.random() * 100);
-    //     props.history.push(`/activity/detail/${id}`);
-    // }
 
     private renderItem = (rowData: any, sectionId = '0', rowId = '0') => {
         return (
