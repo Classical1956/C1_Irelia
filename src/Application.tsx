@@ -14,6 +14,9 @@ import {
 import {
     DetailPage,
 } from './pages/activity';
+import {
+    ProfilePage
+} from './pages/profile';
 
 interface ApplicationProps {
     history: History;
@@ -28,6 +31,7 @@ export default class Application extends React.Component<ApplicationProps> {
                 <Switch>
                     <Route exact={true} path="/" component={MainTab} />
                     <Route path="/activity/detail/:resId" component={DetailPage} />
+                    <Route path="/profile" component={ProfilePage} />
                     <Route component={NotFoundPage} />
                 </Switch>
             </Router>

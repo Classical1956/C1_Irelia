@@ -14,14 +14,14 @@ import {
     MainStore,
 } from '../stores';
 import {
-    HomePage,
-} from './home';
-import {
     ActivityPage,
 } from './activity';
 import {
     RespositoryPage,
 } from './repositories';
+import {
+    ProfilePage
+} from './profile';
 
 @observer
 export default class MainTab extends React.PureComponent {
@@ -68,8 +68,8 @@ export default class MainTab extends React.PureComponent {
                         <RespositoryPage />
                     </TabBar.Item >
                     <TabBar.Item
-                        title="home"
-                        key="home"
+                        title="profile"
+                        key="profile"
                         icon={this.renderIcon(2, false)}
                         selected={this.pageStore.currentSelectedIndex === 2}
                         selectedIcon={this.renderIcon(2, true)}
@@ -77,7 +77,7 @@ export default class MainTab extends React.PureComponent {
                             this.pageStore.updateCurrentSelectedIndex(2);
                         }}
                     >
-                        <HomePage />
+                        <ProfilePage />
                     </TabBar.Item >
                 </TabBar>
             </div>
@@ -89,7 +89,7 @@ export default class MainTab extends React.PureComponent {
         let className = classNames('icon', styles.tabIcon);
         return (
             <svg className={className} aria-hidden="true">
-                <use  xlinkHref={`#${iconName}`} />
+                <use xlinkHref={`#${iconName}`} />
             </svg>
         );
     }

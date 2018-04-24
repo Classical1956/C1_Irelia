@@ -21,7 +21,7 @@ import {
 
 @observer
 export default class BasePage<PS extends IBaseStore> extends React.PureComponent<any, any> {
-    protected pageStore: PS;
+    protected pageStore: any;
 
     protected routeParams: any;
 
