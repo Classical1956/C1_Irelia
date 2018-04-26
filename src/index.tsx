@@ -6,8 +6,10 @@ import 'antd-mobile/dist/antd-mobile.min.css';
 import { createHashHistory } from 'history';
 import Application from './Application';
 import './styles/base.scss';
+import { PageRouter } from './stores';
 
 const history = createHashHistory();
+PageRouter.init(history);
 
 ReactDOM.render(
   <Provider history={history}>
