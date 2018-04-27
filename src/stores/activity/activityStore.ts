@@ -24,7 +24,7 @@ export default class ActivityStore extends BaseStore {
 
     public fetchGithubResponse = async () => {
         console.log('====================================');
-        console.log('activityservice =>', ActivityService);
+        console.log('activityservice =>', ActivityService.listStarredRepos);
         console.log('====================================');
         try {
             const result: any[] = await ActivityService.listStarredRepos();

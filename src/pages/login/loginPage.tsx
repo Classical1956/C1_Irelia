@@ -37,8 +37,12 @@ class LoginPage extends BasePage<any> {
     }
 
     private onCompleteAction = (event: any) => {
-        event.defaultPrevented();
+        // event.preventDefault();
+        console.log('====================================');
+        console.log('CacheService =>', CacheService);
+        console.log('====================================');
         CacheService.saveLoginInfo('sssss');
+        
     }
 }
 
