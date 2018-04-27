@@ -3,12 +3,12 @@ import {
     TabBar,
 } from 'antd-mobile/lib';
 import styles from './MianTab.scss';
-import classNames from 'classnames';
 import { observer } from 'mobx-react';
 import { GlobalStyles } from '../styles';
 import {
     TAB_ICON,
 } from '../constants';
+import { C1Icon } from '../component/common';
 import {
     AppStore,
     MainStore,
@@ -86,11 +86,11 @@ export default class MainTab extends React.PureComponent {
 
     private renderIcon = (index: number, selected: boolean) => {
         let iconName = TAB_ICON[index];
-        let className = classNames('icon', styles.tabIcon);
         return (
-            <svg className={className} aria-hidden="true">
-                <use xlinkHref={`#${iconName}`} />
-            </svg>
+            <C1Icon
+                className={styles.tabIcon}
+                iconName={iconName}
+            />
         );
     }
 }
