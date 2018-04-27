@@ -1,11 +1,11 @@
 import React from 'react';
 import { BasePage } from '../../base';
+import classnames from 'classnames';
 import { withRouter } from 'react-router';
 import { observer } from 'mobx-react';
 import pageStyles from '../../styles/page.scss';
 import { LoginStore } from '../../stores/login';
 import styles from './loginPage.scss';
-import { CacheService } from '../../service';
 
 @observer
 class LoginPage extends BasePage<any> {
@@ -19,30 +19,32 @@ class LoginPage extends BasePage<any> {
         this.pageStore.showContent();
     }
     public renderContent() {
+        const mergeClassName = classnames(pageStyles.pageContent, styles.loginBackground, styles.loginPage);
+        const userInputClass = classnames(styles.input, styles.userInput);
+        const submitClass = classnames(styles.sendBtn, this.pageStore.fetchSubmitDisable ? styles.disableSend : '');
         return (
-            <div className={pageStyles.pageContent}>
+            <div className={mergeClassName}>
                 <form
                     action="."
-                    onSubmit={this.onCompleteAction}
+                    onSubmit={this.pageStore.loginAction}
                     className={styles.form}
                 >
                     <input
-                        className={styles.input}
+                        className={userInputClass}
                         type="text"
+                        placeholder="请输入用户名"
+                        onChange={this.pageStore.updateUserName}
                     />
-                    <button type="submit" className={styles.sendBtn}>保存</button>
+                    <input
+                        className={styles.input}
+                        type="password"
+                        placeholder="请输入密码"
+                        onChange={this.pageStore.updatePassWord}
+                    />
+                    <button disabled={this.pageStore.fetchSubmitDisable} type="submit" className={submitClass}>Sign in!</button>
                 </form>
             </div>
         );
-    }
-
-    private onCompleteAction = (event: any) => {
-        // event.preventDefault();
-        console.log('====================================');
-        console.log('CacheService =>', CacheService);
-        console.log('====================================');
-        CacheService.saveLoginInfo('sssss');
-        
     }
 }
 

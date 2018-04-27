@@ -1,20 +1,45 @@
 
+.loginBackground{
+    background: honeydew url('../../resource/images/login/login_background.jpg') no-repeat fixed ;
+    background-size: cover;
+}
+.loginPage {
+    justify-content: center;
+    align-items: center;
+}
+
 .form{
+    align-self: stretch;
     display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
     flex-direction: column;
-    flex:1;
     padding: 0.5rem;
     box-sizing: border-box;
+    background-color: white;
+    border-radius: 0.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     .input {
         border-radius: 0.167rem;
-        flex: 1;
+        height: 2rem;
         margin-right: 1rem;
+        margin-left: 1rem;
+        background-color: transparent;
+    }
+    .userInput {
+        margin-bottom: 1rem;
     }
 }
 .sendBtn{
+    margin-top: 1rem;
     display: block;
     border-radius: 0.167rem;
+    height: 2.5rem;
     padding: 0.5rem;
-    background-color: #FBA63B;
+    background-color: #ff7723;
     color: white;
+  }
+  .disableSend{
+      background-color: lightgrey;
   }
