@@ -1,12 +1,12 @@
 /*
  * @Author: Classical_1956 
  * @Date: 2018-04-27 18:04:00 
- * @Last Modified by:   Classical_1956 
- * @Last Modified time: 2018-04-27 18:04:00 
+ * @Last Modified by: Classical_1956
+ * @Last Modified time: 2018-04-27 21:03:47
  */
 import { BaseStore } from '../../base';
 import { observable, action, computed } from 'mobx';
-import { CacheService } from '../../service';
+import { LoginService } from '../../service';
 export default class LoginStore extends BaseStore {
 
     @observable
@@ -23,12 +23,9 @@ export default class LoginStore extends BaseStore {
         this.passWord = event.target.value;
     }
     @action
-    loginAction = () => {
-        const loginInfo = {
-            userName: this.userName,
-            passWord: this.passWord,
-        };
-        CacheService.saveLoginInfo(loginInfo);
+    loginAction = async (event: any) => {
+        event.preventDefault();
+        LoginService.login(this.userName, this.passWord);
     }
 
     @computed

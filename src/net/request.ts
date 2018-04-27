@@ -33,19 +33,19 @@ export const request = async (url: string, data?: object, headers?: object, meth
         url = url + '?' + query;
         requestParams = {
             method: method,
-            headers: new Headers({
+            headers: {
                 'Content-Type': 'application/json',
                 ...headers
-            }),
+            },
         };
     } else if (method === 'POST') {
         const body = JSON.stringify(data);
         requestParams = {
             method: method,
-            headers: new Headers({
+            headers: {
                 'Content-Type': 'application/json',
                 ...headers
-            }),
+            },
             body
         };
     } else {
@@ -57,7 +57,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
         const response = await resultData.json();
         console.log('====================================');
         console.log('请求url:', url);
-        console.log('请求参数:', requestParams);
+        console.log('请求参数:', JSON.stringify(requestParams));
         console.log('返回参数:', response);
         console.log('====================================');
         return response;

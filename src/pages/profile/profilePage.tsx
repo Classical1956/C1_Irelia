@@ -28,7 +28,7 @@ class ProfilePage extends BasePage<any> {
     }
 
     private loginOut = () => {
-        CacheService.clearDataByCacheKey(CacheKeys.loginInfo);
+        CacheService.clearDataByCacheKey(CacheKeys.LOGIN_INFO);
         PageRouter.loginOut();
     }
 }
