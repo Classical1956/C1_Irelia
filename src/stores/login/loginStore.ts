@@ -1,3 +1,9 @@
+/*
+ * @Author: Classical_1956 
+ * @Date: 2018-04-27 18:04:00 
+ * @Last Modified by:   Classical_1956 
+ * @Last Modified time: 2018-04-27 18:04:00 
+ */
 import { BaseStore } from '../../base';
 import { observable, action, computed } from 'mobx';
 import { CacheService } from '../../service';
