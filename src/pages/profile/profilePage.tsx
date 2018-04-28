@@ -7,7 +7,7 @@ import pageStyle from '../../styles/page.scss';
 import {
     ProfileStore,
 } from '../../stores/profile';
-import { CacheService, CacheKeys } from '../../service';
+import { CacheService } from '../../service';
 import { Button } from 'antd-mobile';
 import { PageRouter } from '../../stores';
 
@@ -15,7 +15,7 @@ class ProfilePage extends BasePage<any> {
     pageStore: ProfileStore;
     initPageStore() {
         this.pageStore = new ProfileStore();
-        this.pageStore.showContent();
+        this.showAsStaticPage();
     }
     public renderContent() {
         return (
@@ -28,7 +28,7 @@ class ProfilePage extends BasePage<any> {
     }
 
     private loginOut = () => {
-        CacheService.clearDataByCacheKey(CacheKeys.LOGIN_INFO);
+        CacheService.loginOut();
         PageRouter.loginOut();
     }
 }

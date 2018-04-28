@@ -21,7 +21,7 @@ import {
 
 @observer
 export default class BasePage<PS extends IBaseStore> extends React.PureComponent<any, any> {
-    protected pageStore: any;
+    protected pageStore: BaseStore;
 
     protected routeParams: any;
 
@@ -63,6 +63,9 @@ export default class BasePage<PS extends IBaseStore> extends React.PureComponent
                 homepage
             </div>
         );
+    }
+    showAsStaticPage() {
+        this.pageStore.showContent();
     }
 
     // === customer NavigationBar

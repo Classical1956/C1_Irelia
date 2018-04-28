@@ -6,9 +6,7 @@ import {
     Switch,
     Redirect,
 } from 'react-router';
-import {
-    CacheService
-} from './service';
+import { AppStore } from './stores';
 import {
     MainTab,
 } from './pages';
@@ -47,9 +45,8 @@ export default class Application extends React.Component<ApplicationProps> {
     }
 
     private entryRender = () => {
-        const loginInfo = CacheService.loadLoginInfo();
         let path = '/login';
-        if (loginInfo) {
+        if (AppStore.userStore.isLogin) {
             path = '/main';
         }
         return (

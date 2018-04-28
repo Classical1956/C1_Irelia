@@ -5,14 +5,22 @@
  * @Last Modified time: 2018-04-27 21:03:47
  */
 import { BaseStore } from '../../base';
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, runInAction } from 'mobx';
 import { LoginService } from '../../service';
+import { CacheService } from '../../service';
 export default class LoginStore extends BaseStore {
 
     @observable
     userName = '';
     @observable
     passWord = '';
+
+    constructor() {
+        super();
+        runInAction(() => {
+            this.userName = CacheService.loadUserName() || '';
+        });
+    }
 
     @action
     updateUserName = (event: any) => {
@@ -24,12 +32,16 @@ export default class LoginStore extends BaseStore {
     }
     @action
     loginAction = async (event: any) => {
-        event.preventDefault();
+        // event.preventDefault();
         LoginService.login(this.userName, this.passWord);
     }
 
     @computed
     get fetchSubmitDisable() {
         return !(this.userName.length && this.passWord.length);
+    }
+    @computed
+    get fetchUserName(): string {
+        return this.userName;
     }
 }

@@ -48,10 +48,12 @@ class CacheService {
         return sessionStorage.getItem(CacheKeys.USER_TOKEN);
     }
 
-    public clearLoginInfo() {
+    /**
+     * 登出时 清除操作
+     */
+    public loginOut() {
         this.clearDataByCacheKey(CacheKeys.USER_BASIC);
         this.clearDataByCacheKey(CacheKeys.USER_TOKEN);
-
     }
 
 }

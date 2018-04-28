@@ -31,6 +31,7 @@ class LoginPage extends BasePage<any> {
                 >
                     <input
                         className={userInputClass}
+                        value={this.pageStore.fetchUserName}
                         type="text"
                         placeholder="请输入用户名"
                         onChange={this.pageStore.updateUserName}
