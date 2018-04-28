@@ -15,7 +15,6 @@ class ProfilePage extends BasePage<any> {
     pageStore: ProfileStore;
     initPageStore() {
         this.pageStore = new ProfileStore();
-        this.showAsStaticPage();
     }
     public renderContent() {
         return (

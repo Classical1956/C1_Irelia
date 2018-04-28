@@ -6,4 +6,11 @@ export default class ServicePaths {
     static get authorization(): string {
         return Paths.apiDomain + 'authorizations';
     }
+
+    /**
+     * 获取用户信息
+     */
+    static get userInfo(): string {
+        return Paths.apiDomain + 'user';
+    }
 }

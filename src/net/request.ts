@@ -11,15 +11,14 @@ const TIME_OUT = 10000;
  * @param timeOut 超时Promise
  */
 const timeOutRequest = async (fetch: Promise<any>, timeOut: number = TIME_OUT) => {
-    let p = Promise.race([fetch, timeOutPromise()]);
-    return p;
+    return await Promise.race([fetch, timeOutPromise()]);
 };
 
 function timeOutPromise(timeOut: number = TIME_OUT) {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve({
             status: ResponseCode.NET_TIMEOUT,
-            message: 'time out!'
+            statusText: 'time out!'
         }));
     });
 }
@@ -94,8 +93,8 @@ export const request = async (url: string, data?: object, headers?: object, meth
 };
 
 export async function get(url: string, data?: object, headers?: object): Promise<C1Response> {
-    return request(url, data, headers, 'GET');
+    return await request(url, data, headers, 'GET');
 }
 export async function post(url: string, data?: object, headers?: object): Promise<C1Response> {
-    return request(url, data, headers, 'POST');
+    return await request(url, data, headers, 'POST');
 }

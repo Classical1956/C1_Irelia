@@ -15,6 +15,9 @@ export default class BaseService {
 
         if (response.status === 201 && response.data.token) {
             const UserToken = 'token' + response.data.token;
+            console.log('====================================');
+            console.log('UserToken =>', UserToken);
+            console.log('====================================');
             CacheService.saveUserToken(UserToken);
         }
         return response;

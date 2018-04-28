@@ -2,7 +2,7 @@
  * @Author: Classical_1956 
  * @Date: 2018-04-27 18:04:00 
  * @Last Modified by: Classical_1956
- * @Last Modified time: 2018-04-27 21:03:47
+ * @Last Modified time: 2018-04-28 17:59:44
  */
 import { BaseStore } from '../../base';
 import { observable, action, computed, runInAction } from 'mobx';
@@ -32,8 +32,12 @@ export default class LoginStore extends BaseStore {
     }
     @action
     loginAction = async (event: any) => {
-        // event.preventDefault();
+        event.preventDefault();
         LoginService.login(this.userName, this.passWord);
+        // if (response.result) {
+        //     CacheService.saveUserName(this.userName);
+        // }
+        
     }
 
     @computed
