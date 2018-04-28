@@ -1,6 +1,7 @@
 import {
     formParams,
 } from './requestParams';
+import { ResponseCode, C1ResponseFactory, C1Error, C1ErrorFactory } from './index';
 
 const TIME_OUT = 10000;
 
@@ -19,7 +20,10 @@ const timeOutRequest = async (fetch: Promise<any>, timeOut: number = TIME_OUT) =
 
 function timeOutPromise(timeOut: number = TIME_OUT) {
     return new Promise((resolve, reject) => {
-        setTimeout(() => reject('timeout'), timeOut);
+        setTimeout(() => resolve({
+            status: ResponseCode.NET_TIMEOUT,
+            message: 'time out!'
+        }));
     });
 }
 
@@ -52,20 +56,42 @@ export const request = async (url: string, data?: object, headers?: object, meth
 
     }
 
+    const originResponse = await timeOutRequest(fetch(url, requestParams));
+
+    console.log('====================================');
+    console.log('请求url:', url);
+    console.log('请求参数:', JSON.stringify(requestParams));
+    console.log('返回参数:', originResponse);
+    console.log('====================================');
+
+    if (originResponse && originResponse.status === ResponseCode.NET_TIMEOUT) { // 超时处理
+        let error = C1ErrorFactory(originResponse.status, originResponse.statusText);
+        return C1ResponseFactory(false, originResponse.status, null, error);
+    }
+
     try {
-        const resultData = await timeOutRequest(fetch(url, requestParams));
-        const response = await resultData.json();
+
+        const response = await originResponse.json();
+
         console.log('====================================');
         console.log('请求url:', url);
         console.log('请求参数:', JSON.stringify(requestParams));
         console.log('返回参数:', response);
         console.log('====================================');
-        return response;
+
+        if (response.status === 200 || response.status === 201) {
+            return C1ResponseFactory(true, ResponseCode.SUCCESS, response);
+        } else {
+            let error = C1ErrorFactory(ResponseCode.ANOTHER_ERROR, '莫名错误');
+            return C1ResponseFactory(false, originResponse.status, null, error);
+        }
+
     } catch (error) {
         console.log('====================================');
-        console.log('response error =>', error);
+        console.log('request error =>', error);
         console.log('====================================');
-        return {};
+        let c1Error = C1ErrorFactory(ResponseCode.JSON_ERROR, '解析失败');
+        return C1ResponseFactory(false, originResponse.status, null, c1Error, originResponse);
     }
 
 };

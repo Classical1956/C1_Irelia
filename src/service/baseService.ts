@@ -42,7 +42,7 @@ export default class BaseService {
         console.log('basic code =>', basicCode);
         console.log('====================================');
         if (basicCode) {
-            return basicCode;
+            return `Basic ${basicCode}`;
         }
         
         return null;
