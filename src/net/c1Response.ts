@@ -8,6 +8,7 @@ export enum ResponseCode {
 
 export interface C1Response {
     result: boolean;
+    status: number;
     code: number;
     data: any;
     error: C1Error | undefined;
@@ -26,9 +27,10 @@ export interface C1Error {
  * @param error error
  * @param response originResponse
  */
-export function C1ResponseFactory(result: boolean, code: number, data: any, error?: C1Error, response?: any): C1Response {
+export function C1ResponseFactory(result: boolean, status: number, code: number, data: any, error?: C1Error, response?: any): C1Response {
     return {
         result: result,
+        status: status,
         code: code,
         data: data,
         error: error,

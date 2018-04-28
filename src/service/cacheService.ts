@@ -1,5 +1,6 @@
 
 export const CacheKeys = {
+    USER_NAME: 'USER_NAME',
     LOGIN_INFO: 'LOGIN_INFO',
     USER_BASIC: 'USER_BASIC',
     USER_TOKEN: 'USER_TOKEN',
@@ -17,6 +18,15 @@ class CacheService {
     }
     public saveLoginInfo(loginInfo: any) {
         sessionStorage.setItem(CacheKeys.LOGIN_INFO, JSON.stringify(loginInfo));
+    }
+    /**
+     *  保存用户名
+     */
+    public saveUserName(userName: string): void {
+        sessionStorage.setItem(CacheKeys.USER_NAME, userName);
+    }
+    public loadUserName(): string | null {
+        return sessionStorage.getItem(CacheKeys.USER_NAME);
     }
 
     /**
@@ -36,6 +46,12 @@ class CacheService {
     }
     public loadUserToken(): string | null {
         return sessionStorage.getItem(CacheKeys.USER_TOKEN);
+    }
+
+    public clearLoginInfo() {
+        this.clearDataByCacheKey(CacheKeys.USER_BASIC);
+        this.clearDataByCacheKey(CacheKeys.USER_TOKEN);
+
     }
 
 }
