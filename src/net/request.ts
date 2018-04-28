@@ -12,9 +12,6 @@ const TIME_OUT = 10000;
  */
 const timeOutRequest = async (fetch: Promise<any>, timeOut: number = TIME_OUT) => {
     let p = Promise.race([fetch, timeOutPromise()]);
-    console.log('====================================');
-    console.log('timeOutRequest =>', p);
-    console.log('====================================');
     return p;
 };
 

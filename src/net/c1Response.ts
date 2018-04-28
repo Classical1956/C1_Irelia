@@ -22,6 +22,7 @@ export interface C1Error {
 /**
  * 构建 response
  * @param result  结果 false true
+ * @param status http 返回状态码
  * @param code response Code, success,failed, net Timeout
  * @param data 数据
  * @param error error
