@@ -10,6 +10,9 @@ class PageRouter {
     public loginOut() {
         this.history.push('/');
     }
+    public signIn() {
+        this.history.replace('/');
+    }
 }
 
 export default new PageRouter();

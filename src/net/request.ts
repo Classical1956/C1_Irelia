@@ -18,7 +18,7 @@ function timeOutPromise(timeOut: number = TIME_OUT) {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve({
             status: ResponseCode.NET_TIMEOUT,
-            statusText: 'time out!'
+            message: 'time out!'
         }),        timeOut);
     });
 }
@@ -61,7 +61,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
     console.log('====================================');
 
     if (originResponse && originResponse.status === ResponseCode.NET_TIMEOUT) { // 超时处理
-        let error = C1ErrorFactory(originResponse.status, originResponse.statusText);
+        let error = C1ErrorFactory(originResponse.status, originResponse.message);
         return C1ResponseFactory(false, originResponse.status, originResponse.status, null, error);
     }
 
@@ -78,7 +78,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
         if (originResponse.status === 200 || originResponse.status === 201) {
             return C1ResponseFactory(true, originResponse.status, ResponseCode.SUCCESS, response);
         } else {
-            let error = C1ErrorFactory(ResponseCode.ANOTHER_ERROR, '莫名错误');
+            let error = C1ErrorFactory(ResponseCode.ANOTHER_ERROR, response.message);
             return C1ResponseFactory(false, originResponse.status, ResponseCode.ANOTHER_ERROR, null, error);
         }
 
@@ -86,7 +86,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
         console.log('====================================');
         console.log('request error =>', error);
         console.log('====================================');
-        let c1Error = C1ErrorFactory(ResponseCode.JSON_ERROR, '解析失败');
+        let c1Error = C1ErrorFactory(ResponseCode.JSON_ERROR, error.message);
         return C1ResponseFactory(false, originResponse.status, ResponseCode.JSON_ERROR, null, c1Error, originResponse);
     }
 

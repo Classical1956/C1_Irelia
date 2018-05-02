@@ -11,7 +11,7 @@ export interface C1Response {
     status: number;
     code: number;
     data: any;
-    error: C1Error | undefined;
+    error: C1Error;
     response?: any;
 }
 export interface C1Error {
@@ -28,7 +28,7 @@ export interface C1Error {
  * @param error error
  * @param response originResponse
  */
-export function C1ResponseFactory(result: boolean, status: number, code: number, data: any, error?: C1Error, response?: any): C1Response {
+export function C1ResponseFactory(result: boolean, status: number, code: number, data: any, error: C1Error = C1ErrorFactory(ResponseCode.SUCCESS, ''), response: any = {}): C1Response {
     return {
         result: result,
         status: status,
