@@ -32,12 +32,12 @@ export default class LoginStore extends BaseStore {
     }
     @action
     loginAction = async (event: any) => {
-        event.preventDefault();
-        LoginService.login(this.userName, this.passWord);
-        // if (response.result) {
-        //     CacheService.saveUserName(this.userName);
-        // }
-        
+        // event.preventDefault();
+        const response = await LoginService.login(this.userName, this.passWord);
+        if (response.result) {
+            CacheService.saveUserName(this.userName);
+        }
+
     }
 
     @computed

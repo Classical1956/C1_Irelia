@@ -19,7 +19,7 @@ function timeOutPromise(timeOut: number = TIME_OUT) {
         setTimeout(() => resolve({
             status: ResponseCode.NET_TIMEOUT,
             statusText: 'time out!'
-        }));
+        }),        timeOut);
     });
 }
 
@@ -93,8 +93,8 @@ export const request = async (url: string, data?: object, headers?: object, meth
 };
 
 export async function get(url: string, data?: object, headers?: object): Promise<C1Response> {
-    return await request(url, data, headers, 'GET');
+    return request(url, data, headers, 'GET');
 }
 export async function post(url: string, data?: object, headers?: object): Promise<C1Response> {
-    return await request(url, data, headers, 'POST');
+    return request(url, data, headers, 'POST');
 }
