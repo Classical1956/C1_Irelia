@@ -13,6 +13,11 @@ import { PageRouter } from '../../stores';
 
 class ProfilePage extends BasePage<any> {
     pageStore: ProfileStore;
+
+    showNavigationBar() {
+        return false;
+    }
+
     initPageStore() {
         this.pageStore = new ProfileStore();
     }

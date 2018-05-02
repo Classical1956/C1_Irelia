@@ -8,6 +8,7 @@ import { BaseStore } from '../../base';
 import { observable, action, computed, runInAction } from 'mobx';
 import { LoginService } from '../../service';
 import { CacheService } from '../../service';
+import { Toast } from 'antd-mobile';
 export default class LoginStore extends BaseStore {
 
     @observable
@@ -33,10 +34,12 @@ export default class LoginStore extends BaseStore {
     @action
     loginAction = async (event: any) => {
         // event.preventDefault();
+        Toast.loading('正在登陆');
         const response = await LoginService.login(this.userName, this.passWord);
         if (response.result) {
             CacheService.saveUserName(this.userName);
         }
+        Toast.hide();
 
     }
 
