@@ -8,7 +8,7 @@ class PageRouter {
     }
 
     public loginOut() {
-        this.history.push('/');
+        this.history.replace('/');
     }
     public signIn() {
         this.history.replace('/');

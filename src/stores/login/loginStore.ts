@@ -44,7 +44,6 @@ export default class LoginStore extends BaseStore {
         } else {
             Toast.show(response.error.errorMessage);
         }
-
     }
 
     @computed

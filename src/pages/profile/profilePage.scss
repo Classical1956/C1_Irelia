@@ -1,0 +1,73 @@
+.profileTop {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    .profileHead {
+        margin-top: 0.4rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 100%;
+        overflow: hidden;
+        border-color: white;
+        border-width: 1px;
+    }
+    .profileName {
+        margin-top: 0.25rem;
+        color: #313131;
+        font-size: 0.75rem;
+    }
+    .profileTimeContainer {
+        align-self: stretch;
+        margin-top: 0.4rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .time {
+            display: inline;
+            color: #7e7e81;
+            font-size: 0.5rem
+        }
+        .timeBetween {
+            margin-left: 0.75rem;
+        }
+    }
+}
+
+.profileActivity {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+    .activityItem {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        .count {
+            display: inline;
+            color: #313131;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .title {
+            margin-top: 0.5rem;
+            display: inline-block;
+            color: #313131;
+            font-size: 0.7rem;
+        }
+    }
+}
