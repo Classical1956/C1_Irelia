@@ -1,3 +1,5 @@
 export const pageContent: string;
-export const homeColor: string;
-export const icons: string;
+export const listView: string;
+export const tabContent: string;
+export const stickyContainer: string;
+export const sticky: string;

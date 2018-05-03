@@ -1,9 +1,6 @@
 import {
     BaseStore
 } from '../../base';
-// import {
-//     observable
-// } from 'mobx';
 import {
     ActivityService,
 } from '../../service';

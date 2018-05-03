@@ -20,14 +20,11 @@ import {
     MainStore,
 } from '../stores';
 import {
-    ActivityPage,
-} from './activity';
-import {
-    RespositoryPage,
-} from './repositories';
-import {
     ProfilePage
 } from './profile';
+import {
+    HomePage,
+} from './home';
 
 @observer
 export default class MainTab extends React.PureComponent {
@@ -49,8 +46,8 @@ export default class MainTab extends React.PureComponent {
                     barTintColor="white"
                 >
                     <TabBar.Item
-                        title="Activity"
-                        key="Activity"
+                        title="github"
+                        key="github"
                         icon={this.renderIcon(0, false)}
                         selected={this.pageStore.currentSelectedIndex === 0}
                         selectedIcon={this.renderIcon(0, true)}
@@ -58,29 +55,17 @@ export default class MainTab extends React.PureComponent {
                             this.pageStore.updateCurrentSelectedIndex(0);
                         }}
                     >
-                        <ActivityPage />
+                        <HomePage />
                     </TabBar.Item >
 
                     <TabBar.Item
-                        title="Respository"
-                        key="Respository"
+                        title="profile"
+                        key="profile"
                         icon={this.renderIcon(1, false)}
                         selected={this.pageStore.currentSelectedIndex === 1}
                         selectedIcon={this.renderIcon(1, true)}
                         onPress={() => {
                             this.pageStore.updateCurrentSelectedIndex(1);
-                        }}
-                    >
-                        <RespositoryPage />
-                    </TabBar.Item >
-                    <TabBar.Item
-                        title="profile"
-                        key="profile"
-                        icon={this.renderIcon(2, false)}
-                        selected={this.pageStore.currentSelectedIndex === 2}
-                        selectedIcon={this.renderIcon(2, true)}
-                        onPress={() => {
-                            this.pageStore.updateCurrentSelectedIndex(2);
                         }}
                     >
                         <ProfilePage />

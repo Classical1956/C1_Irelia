@@ -19,7 +19,7 @@ import {
 class ActivityPage extends BasePage<ActivityStore> {
 
     pageStore: ActivityStore;
-    
+
     constructor(props: any) {
         super(props);
     }

@@ -1,0 +1,25 @@
+.simpleRespositoriesCell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0.95rem 0.9rem 0.95rem;
+    .leftItem {
+        .respositoriesName {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0366d6;
+            word-wrap: break-word;
+        }
+    }
+    .rightItem {
+        justify-content: flex-end;
+        .starred {
+            display: inline;
+            font-size: 1rem;
+            color: #def;
+            margin-right: 0.3rem;
+        }
+    }
+}

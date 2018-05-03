@@ -14,7 +14,6 @@ export const LAYOUT_STATE = {
  * tab icon
  */
 export const TAB_ICON = [
-    'icon-yemian',
     'icon-github',
     'icon-geren'
 ];
