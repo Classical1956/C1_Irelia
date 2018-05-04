@@ -1,14 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import styles from './homePage.scss';
-// import globalStyles from '../../styles/page.scss';
+import globalStyles from '../../styles/page.scss';
 import classnames from 'classnames';
 import {
     BasePage
 } from '../../base';
 import {
     Tabs,
-    ListView,
 } from 'antd-mobile';
 import {
     SimpleRespositoriesCell
@@ -46,14 +45,7 @@ class HomePage extends BasePage<HomeStore> {
     private renderOverview() {
         return (
             <div className={styles.tabContent}>
-                <ListView
-                    className={styles.listView}
-                    initialListSize={this.pageStore.fetchOverviewDatas.getRowCount}
-                    dataSource={this.pageStore.fetchOverviewDatas}
-                    renderRow={this.renderOverviewItem}
-                    renderSectionBodyWrapper={this.renderSectionWrapperItem}
-                    renderSectionHeader={this.renderSectionHeader}
-                />
+                {this.renderStarredBlock(this.pageStore.fetchStarrList)}
             </div>
         );
     }
@@ -66,35 +58,23 @@ class HomePage extends BasePage<HomeStore> {
         );
     }
 
-    private renderSectionWrapperItem = (sectionId) => {
-        const mergeClassname = classnames(styles.stickyContainer, styles.mt3);
+    private renderStarredBlock = (starredList: IRepositories[] = []) => {
+        if (starredList.length === 0) {
+            return undefined;
+        }
+        const boxMerge = classnames(styles.bubble, globalStyles.mt1, globalStyles.mb0);
+        const titleMerge = classnames(styles.bubbleTitle, globalStyles.bgGray);
         return (
-            <div
-                key={`s_${sectionId}_c`}
-                className={mergeClassname}
-            />
-        );
-    }
-    private renderSectionHeader = (sectionData) => {
-        return (
-            <div className={styles.sticky}>
-                <p className={styles.sectionTitle}>{sectionData}</p>
+            <div className={boxMerge}>
+                <h3 className={titleMerge}>Starred repositories</h3>
+                <div className={globalStyles.list}>
+                    {
+                        starredList.map(this.renderOverviewItem)
+                    }
+                </div>
             </div>
         );
     }
-
-    // private renderStarredBlock = (starreds: IRepositories[] = []) => {
-    //     if (starreds.length === 0) {
-    //         return undefined;
-    //     }
-    //     const boxMerge = classnames(styles.bubble, globalStyles.mt1, globalStyles.mb0);
-    //     const titleMerge = classnames(styles.bubbleTitle, globalStyles.bgGray);
-    //     return (
-    //         <div className={boxMerge}>
-    //             <h3 className={titleMerge}>Starred repositories</h3>
-    //         </div>
-    //     );
-    // }
 
 }
 
