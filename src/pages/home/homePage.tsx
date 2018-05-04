@@ -8,7 +8,6 @@ import {
     Tabs,
     ListView,
 } from 'antd-mobile';
-import { StickyContainer, Sticky } from 'react-sticky';
 import {
     SimpleRespositoriesCell
 } from '../../component/home';
@@ -36,6 +35,7 @@ class HomePage extends BasePage<HomeStore> {
                         Content of second tab
       </div>
                 </Tabs>
+
             </div>
         );
     }
@@ -44,8 +44,8 @@ class HomePage extends BasePage<HomeStore> {
         return (
             <div className={styles.tabContent}>
                 <ListView
-                    useBodyScroll={true}
                     className={styles.listView}
+                    initialListSize={this.pageStore.fetchOverviewDatas.getRowCount}
                     dataSource={this.pageStore.fetchOverviewDatas}
                     renderRow={this.renderOverviewItem}
                     renderSectionWrapper={this.renderSectionWrapperItem}
@@ -55,9 +55,9 @@ class HomePage extends BasePage<HomeStore> {
         );
     }
     private renderOverviewItem = (rowData) => {
-        console.log('====================================');
-        console.log('renderOverviewItem arg =>', rowData);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log('renderOverviewItem arg =>', rowData);
+        // console.log('====================================');
         return (
             <SimpleRespositoriesCell
                 respositoriesName={rowData}
@@ -65,13 +65,22 @@ class HomePage extends BasePage<HomeStore> {
         );
     }
     private renderSectionWrapperItem = (sectionId) => {
-        console.log('====================================');
-        console.log('renderSectionItem arg =>', sectionId);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log('renderSectionWrapperItem sectionId =>', sectionId);
+        // console.log('====================================');
+        let color = '#1122dd';
+        if (sectionId === 'A') {
+            color = '#ff7723';
+        } else if (sectionId === 'B') {
+            color = '#8711dd';
+        } else {
+            color = '#144222';
+        }
         return (
-            <StickyContainer
+            <div
                 key={`s_${sectionId}_c`}
                 className={styles.stickyContainer}
+                style={{ backgroundColor: color, zIndex: 4 }}
             />
         );
     }
@@ -80,9 +89,9 @@ class HomePage extends BasePage<HomeStore> {
         console.log('renderSectionHeader arg =>', sectionData);
         console.log('====================================');
         return (
-            <Sticky>
-                {({ style }) => <div className={styles.sticky} style={{ ...style }}>{sectionData}</div>}
-            </Sticky>
+
+            <div className={styles.sticky} style={{zIndex: 3, backgroundColor: '#1199ff', color: 'white' }}>{sectionData}</div>
+
         );
     }
 }

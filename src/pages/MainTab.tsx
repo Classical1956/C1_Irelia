@@ -1,8 +1,8 @@
 /*
  * @Author: Classical_1956 
  * @Date: 2018-04-27 14:18:27 
- * @Last Modified by:   Classical_1956 
- * @Last Modified time: 2018-04-27 14:18:27 
+ * @Last Modified by: Classical_1956
+ * @Last Modified time: 2018-05-04 11:05:34
  */
 import React from 'react';
 import {
@@ -25,7 +25,9 @@ import {
 import {
     HomePage,
 } from './home';
-
+// import {
+//     ActivityPage,
+// } from './activity';
 @observer
 export default class MainTab extends React.PureComponent {
 

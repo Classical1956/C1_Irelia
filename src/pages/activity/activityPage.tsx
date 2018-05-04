@@ -40,6 +40,7 @@ class ActivityPage extends BasePage<ActivityStore> {
             <div className={styles.pageContent}>
                 <ListView
                     className={styles.listView}
+                    initialListSize={20}
                     renderRow={this.renderItem}
                     dataSource={this.pageStore.fetchActivityList}
                 />
@@ -51,8 +52,8 @@ class ActivityPage extends BasePage<ActivityStore> {
         return (
             <ActivityCell
                 index={parseInt(rowId, 10)}
-                stargazers_count={rowData.stargazers_count}
-                full_name={rowData.full_name}
+                stargazers_count={parseInt(rowId, 10)}
+                full_name={rowId}
             />
         );
     }

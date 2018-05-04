@@ -1,9 +1,9 @@
 import {
     BaseStore
 } from '../../base';
-import {
-    ActivityService,
-} from '../../service';
+// import {
+//     ActivityService,
+// } from '../../service';
 import { observable, computed, runInAction } from 'mobx';
 import { ListView } from 'antd-mobile';
 
@@ -21,7 +21,7 @@ export default class ActivityStore extends BaseStore {
 
     public fetchGithubResponse = async () => {
         try {
-            const result: any[] = await ActivityService.listStarredRepos();
+            const result: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, ]; // await ActivityService.listStarredRepos();
             console.log('====================================');
             console.log('sss =>', result);
             console.log('====================================');

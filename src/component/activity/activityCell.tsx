@@ -23,7 +23,7 @@ export const ActivityCell: React.SFC<ActivityCellProps> = ({
     let borderStyle = index !== 0 ? styles.list_heading : '';
     let itemStyle = classNames(styles.list_item, borderStyle);
     console.log('====================================');
-    console.log('uten srtles =>', itemStyle);
+    console.log('uten srtles =>', stargazers_count);
     console.log('====================================');
     return (
         <div className={itemStyle}>
