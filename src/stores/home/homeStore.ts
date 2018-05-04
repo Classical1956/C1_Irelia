@@ -9,7 +9,8 @@ export default class HomeStore extends BaseStore {
 
     @observable
     starredList = observable.array<IRepositories>();
-
+    @observable
+    watchedList = observable.array<IRepositories>();
     @observable
     tabTitles = [{
         title: 'Overview',
@@ -18,11 +19,12 @@ export default class HomeStore extends BaseStore {
     }];
 
     loadData() {
-        this.loadStarredRespositories();
+        this.loadStarredRepositories();
+        this.loadWatchedRepositories();
     }
 
     @action
-    async loadStarredRespositories() {
+    async loadStarredRepositories() {
         try {
             const response = await UserService.fetchStarredRepositories();
             console.log('====================================');
@@ -40,6 +42,26 @@ export default class HomeStore extends BaseStore {
         }
     }
 
+    @action
+    async loadWatchedRepositories() {
+        try {
+            const response = await UserService.fetchWatchedRepositories();
+            console.log('====================================');
+            console.log('loadWatchedRepositories =>', response);
+            console.log('====================================');
+            runInAction(() => {
+                this.watchedList.clear();
+                if (response.result) {
+                    this.watchedList.push(...response.data);
+                } else {
+                    // TODO: 处理error
+                }
+            });
+        } catch (error) {
+
+        }
+    }
+
     @computed
     get fetchTabTitles() {
         return this.tabTitles.slice();
@@ -48,5 +70,9 @@ export default class HomeStore extends BaseStore {
     @computed
     get fetchStarrList() {
         return this.starredList.slice();
+    }
+    @computed
+    get fetchWatchedList() {
+        return this.watchedList.slice();
     }
 }

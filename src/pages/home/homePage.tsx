@@ -41,11 +41,12 @@ class HomePage extends BasePage<HomeStore> {
             </div>
         );
     }
-
+  
     private renderOverview() {
         return (
             <div className={styles.tabContent}>
                 {this.renderStarredBlock(this.pageStore.fetchStarrList)}
+                {this.renderWatchedBlock(this.pageStore.fetchWatchedList)}
             </div>
         );
     }
@@ -70,6 +71,23 @@ class HomePage extends BasePage<HomeStore> {
                 <div className={globalStyles.list}>
                     {
                         starredList.map(this.renderOverviewItem)
+                    }
+                </div>
+            </div>
+        );
+    }
+    private renderWatchedBlock = (watchedList: IRepositories[] = []) => {
+        if (watchedList.length === 0) {
+            return undefined;
+        }
+        const boxMerge = classnames(styles.bubble, globalStyles.mt1, globalStyles.mb0);
+        const titleMerge = classnames(styles.bubbleTitle, globalStyles.bgGray);
+        return (
+            <div className={boxMerge}>
+                <h3 className={titleMerge}>Watched repositories</h3>
+                <div className={globalStyles.list}>
+                    {
+                        watchedList.map(this.renderOverviewItem)
                     }
                 </div>
             </div>

@@ -18,6 +18,13 @@ class UserService extends BaseService {
     public fetchStarredRepositories = async (): Promise<C1Response> => {
         return await this.get(ServicePaths.user.starredRepositories);
     }
+
+    /**
+     * 获取 watched repositories list
+     */
+    public fetchWatchedRepositories = async (): Promise<C1Response> => {
+        return await this.get(ServicePaths.user.watingRepositoriesList);
+    }
 }
 
 export default new UserService();
