@@ -29,7 +29,7 @@ export default class BaseService {
             Authorization: authorizationCode,
         });
 
-        const response = await Request.post(url, data, headers);
+        const response = await Request.get(url, data, headers);
 
         if (response.status === 201 && response.data.token) {
             const UserToken = 'token' + response.data.token;

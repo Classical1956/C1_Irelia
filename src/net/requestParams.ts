@@ -9,6 +9,6 @@ export function formParams(params: object = {}) {
     if (kvList) {
         return kvList.join('&');
     } else {
-        return '';
+        return undefined;
     }
 }

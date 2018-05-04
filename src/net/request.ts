@@ -30,7 +30,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
     let requestParams;
     if (method === 'GET') {
         const query = formParams(data);
-        url = url + '?' + query;
+        url = query ? url + '?' + query : url;
         requestParams = {
             method: method,
             headers: {

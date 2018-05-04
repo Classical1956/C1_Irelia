@@ -3,6 +3,7 @@ import {
 } from '../../base';
 import { ListView } from 'antd-mobile';
 import { observable, computed, action } from 'mobx';
+import { UserService } from '../../service';
 
 export default class HomeStore extends BaseStore {
 
@@ -32,12 +33,20 @@ export default class HomeStore extends BaseStore {
 
     loadData() {
         this.processData();
+        this.loadStarredRespositories();
     }
 
     @action
-    loadStarredRespositories() {
-        
-    }   
+    async loadStarredRespositories() {
+        try {
+            const response = await UserService.fetchStarredRepositories();
+            console.log('====================================');
+            console.log('loadStarredRespositories =>', response);
+            console.log('====================================');
+        } catch (error) {
+
+        }
+    }
 
     @action
     processData = () => {
