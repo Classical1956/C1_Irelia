@@ -10,14 +10,14 @@ interface SimpleRespositoriesCellProps {
 }
 
 const leftTitleMerge = classnames(styles.respositoriesName, globalStyles.ml1);
-
+const topLineMerge = classnames(styles.simpleRespositoriesCell, globalStyles.topLine);
 export const SimpleRespositoriesCell: React.SFC<SimpleRespositoriesCellProps> = ({
     respositoriesName,
     starredNumber,
 }) => {
-    
+
     return (
-        <div className={styles.simpleRespositoriesCell}>
+        <div className={topLineMerge}>
             <div className={styles.leftItem}>
                 <C1Icon className={styles.simpleIcon} iconName="icon-yemian" />
                 <p className={leftTitleMerge}>{respositoriesName}</p>
