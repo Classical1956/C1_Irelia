@@ -12,7 +12,7 @@ export const SimpleRespositoriesCell: React.SFC<SimpleRespositoriesCellProps> = 
 }) => {
     return (
         <div className={styles.simpleRespositoriesCell}>
-            <p>{JSON.stringify(respositoriesName)}</p>
+            <p>{respositoriesName}</p>
         </div>
     );
 };

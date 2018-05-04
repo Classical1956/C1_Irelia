@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import styles from './homePage.scss';
+// import globalStyles from '../../styles/page.scss';
+import classnames from 'classnames';
 import {
     BasePage
 } from '../../base';
@@ -13,6 +15,7 @@ import {
 } from '../../component/home';
 import { HomeStore } from '../../stores/home';
 import { withRouter } from 'react-router';
+import { IRepositories } from '../../interface';
 @observer
 class HomePage extends BasePage<HomeStore> {
     protected pageStore: HomeStore;
@@ -48,52 +51,51 @@ class HomePage extends BasePage<HomeStore> {
                     initialListSize={this.pageStore.fetchOverviewDatas.getRowCount}
                     dataSource={this.pageStore.fetchOverviewDatas}
                     renderRow={this.renderOverviewItem}
-                    renderSectionWrapper={this.renderSectionWrapperItem}
+                    renderSectionBodyWrapper={this.renderSectionWrapperItem}
                     renderSectionHeader={this.renderSectionHeader}
                 />
             </div>
         );
     }
-    private renderOverviewItem = (rowData) => {
-        // console.log('====================================');
-        // console.log('renderOverviewItem arg =>', rowData);
-        // console.log('====================================');
+    private renderOverviewItem = (repositories: IRepositories) => {
         return (
             <SimpleRespositoriesCell
-                respositoriesName={rowData}
+                respositoriesName={repositories.full_name}
+                starredNumber={repositories.stargazers_count}
             />
         );
     }
+
     private renderSectionWrapperItem = (sectionId) => {
-        // console.log('====================================');
-        // console.log('renderSectionWrapperItem sectionId =>', sectionId);
-        // console.log('====================================');
-        let color = '#1122dd';
-        if (sectionId === 'A') {
-            color = '#ff7723';
-        } else if (sectionId === 'B') {
-            color = '#8711dd';
-        } else {
-            color = '#144222';
-        }
+        const mergeClassname = classnames(styles.stickyContainer, styles.mt3);
         return (
             <div
                 key={`s_${sectionId}_c`}
-                className={styles.stickyContainer}
-                style={{ backgroundColor: color, zIndex: 4 }}
+                className={mergeClassname}
             />
         );
     }
     private renderSectionHeader = (sectionData) => {
-        console.log('====================================');
-        console.log('renderSectionHeader arg =>', sectionData);
-        console.log('====================================');
         return (
-
-            <div className={styles.sticky} style={{zIndex: 3, backgroundColor: '#1199ff', color: 'white' }}>{sectionData}</div>
-
+            <div className={styles.sticky}>
+                <p className={styles.sectionTitle}>{sectionData}</p>
+            </div>
         );
     }
+
+    // private renderStarredBlock = (starreds: IRepositories[] = []) => {
+    //     if (starreds.length === 0) {
+    //         return undefined;
+    //     }
+    //     const boxMerge = classnames(styles.bubble, globalStyles.mt1, globalStyles.mb0);
+    //     const titleMerge = classnames(styles.bubbleTitle, globalStyles.bgGray);
+    //     return (
+    //         <div className={boxMerge}>
+    //             <h3 className={titleMerge}>Starred repositories</h3>
+    //         </div>
+    //     );
+    // }
+
 }
 
 export default withRouter(HomePage);

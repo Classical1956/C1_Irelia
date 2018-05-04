@@ -2,4 +2,8 @@ export const pageContent: string;
 export const tabContent: string;
 export const listView: string;
 export const stickyContainer: string;
+export const mt3: string;
 export const sticky: string;
+export const sectionTitle: string;
+export const bubble: string;
+export const bubbleTitle: string;
