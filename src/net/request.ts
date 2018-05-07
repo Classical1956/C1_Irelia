@@ -3,6 +3,7 @@ import {
 } from './requestParams';
 import { ResponseCode, C1ResponseFactory, C1ErrorFactory, C1Response } from './index';
 
+const CONTENT_TYPE = 'application/json';
 const TIME_OUT = 10000;
 
 /**
@@ -34,7 +35,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
         requestParams = {
             method: method,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': CONTENT_TYPE,
                 ...headers
             },
         };
@@ -43,7 +44,7 @@ export const request = async (url: string, data?: object, headers?: object, meth
         requestParams = {
             method: method,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': CONTENT_TYPE,
                 ...headers
             },
             body

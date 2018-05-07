@@ -13,7 +13,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const tsImportPluginFactory = require('ts-import-plugin')
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -154,15 +154,17 @@ module.exports = {
           {
             test: /\.(ts|tsx)$/,
             include: paths.appSrc,
-            use: [
-              {
-                loader: require.resolve('ts-loader'),
-                options: {
-                  // disable type checker - we will use it in fork plugin
-                  transpileOnly: true,
-                },
-              },
-            ],
+            loader: require.resolve('ts-loader'),
+            options: {
+              transpileOnly: true,
+              getCustomTransformers:()=>({
+                before: [tsImportPluginFactory({ libraryName: 'antd-mobile', style: true })]
+              }),
+              compilerOptions: {
+                module: 'es2015'
+              }
+            },
+            exclude: /node_modules/
           },
           {
             test: /\.scss$/,

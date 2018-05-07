@@ -17,7 +17,7 @@
             font-weight: 600;
             color: #0366d6;
             word-wrap: break-word;
-            margin-left: 0.6rem;
+            // margin-left: 0.6rem;
             word-wrap: break-word;
             word-break: break-all;
         }
@@ -38,6 +38,8 @@
 }
 
 .simpleIcon {
+    display: block;
     width: 1rem;
     height: 1rem; 
+    transform: none;
 }
